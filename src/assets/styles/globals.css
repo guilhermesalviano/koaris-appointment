@@ -1,0 +1,62 @@
+@import "@koaris/bloom-ui/dist/tailwind.css";
+
+:root {
+    --foreground: theme('colors.neutral.800');
+    --background: theme('colors.neutral.100');
+    --background-harder: theme('colors.neutral.100');
+    --primary-color: theme('colors.orange.500');
+}
+
+@media (prefers-color-scheme: dark) {
+    :root {
+      --foreground: theme('colors.neutral.100');
+      --background: theme('colors.neutral.800');
+    }
+}
+
+body {
+    color: var(--foreground);
+    background: var(--background);
+    -webkit-font-smoothing: antialiased;
+}
+
+h1, ul, li {
+    color: var(--foreground);
+}
+
+.text-highlight {
+    color: var(--primary-color);
+}
+
+.container { 
+    max-width: calc(100vw - (100vw - 1160px) / 2);
+    margin-left: auto;
+    height: 100vh;
+}
+
+.hero {
+    max-width: 480px;
+}
+
+.hero h1 {
+    font-weight: bold;
+    line-height: 3.4rem;
+}
+
+@media (max-width: 600px) {
+    .preview {
+        display: none;
+    }
+
+    .hero {
+        max-width: 370px;
+    }
+
+    .hero h1 {
+        @apply text-4xl;
+    }
+
+    .hero p {
+        @apply text-sm;
+    }
+}
