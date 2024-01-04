@@ -1,3 +1,6 @@
 {
-  "extends": "next/core-web-vitals"
+  "extends": [
+    "@koaris/eslint-config/index",
+    "next/core-web-vitals"
+  ]
 }

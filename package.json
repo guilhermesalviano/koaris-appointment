@@ -16,6 +16,7 @@
     "tailwind-merge": "^2.2.0"
   },
   "devDependencies": {
+    "@koaris/eslint-config": "^1.0.1",
     "@types/node": "^20",
     "@types/react": "^18",
     "@types/react-dom": "^18",
