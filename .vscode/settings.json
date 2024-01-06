@@ -1,42 +1,26 @@
 {
-    "[html]": {
-        "editor.defaultFormatter": "lonefy.vscode-JS-CSS-HTML-formatter"
-    },
-    "[javascript]": {
-        "editor.defaultFormatter": "rvest.vs-code-prettier-eslint"
-    },
-    "[javascriptreact]": {
-        "editor.defaultFormatter": "rvest.vs-code-prettier-eslint"
+    "workbench.colorTheme": "Default Dark+",
+    "editor.wordWrap": "wordWrapColumn",
+    "editor.wordWrapColumn": 120,
+    "[prisma]": {
+        "editor.formatOnSave": true,
+        "editor.defaultFormatter": "Prisma.prisma"
     },
     "editor.cursorStyle": "line",
     "editor.lineNumbers": "on",
     "editor.wordSeparators": "/\\()\"':,.;<>~!@#$%^&*|+=[]{}`?-",
-    "explorer.confirmDelete": false,
     "typescript.updateImportsOnFileMove.enabled": "always",
     "javascript.updateImportsOnFileMove.enabled": "always",
     "markdown-preview-enhanced.previewTheme": "vue.css",
     "tabnine.experimentalAutoImports": true,
-    "[typescript]": {
-        "editor.defaultFormatter": "rvest.vs-code-prettier-eslint"
-    },
     "explorer.confirmDragAndDrop": false,
     "workbench.iconTheme": "eq-material-theme-icons-light",
-    "security.workspace.trust.untrustedFiles": "open",
-    "[typescriptreact]": {
-        "editor.defaultFormatter": "vscode.typescript-language-features"
-    },
-    "eslint.enable": true,
     "terminal.integrated.env.osx": {},
     "console-ninja.featureSet": "Community",
     "markdown-preview-enhanced.codeBlockTheme": "default.css",
-    "workbench.colorTheme": "Default Dark+",
-    "editor.wordWrap": "wordWrapColumn",
-    "editor.wordWrapColumn": 120,
     "editor.defaultFormatter": "rvest.vs-code-prettier-eslint",
-    "editor.formatOnPaste": false, // required 
-    "editor.formatOnType": false, // required
-    "editor.formatOnSave": true, // optional 
-    "editor.formatOnSaveMode": "file", // required to format on save
-    "files.autoSave": "onFocusChange", // optional but recommended
+    "editor.formatOnPaste": true,
+    "editor.formatOnType": true,
+    "editor.formatOnSave": true, 
     "vs-code-prettier-eslint.prettierLast": true 
 }
