@@ -16,7 +16,9 @@ export default function RootLayout({
 }) {
   return (
     <html lang="pt-BR">
-      <body className={openSans.className}>{children}</body>
+      <body className={`${openSans.className} flex justify-center`}>
+        {children}
+      </body>
     </html>
   )
 }
