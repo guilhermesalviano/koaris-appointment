@@ -1,4 +1,5 @@
 'use client'
+import { api } from '@/lib/axios'
 import { zodResolver } from '@hookform/resolvers/zod'
 import {
   Heading,
@@ -9,6 +10,7 @@ import {
   Input,
   Button,
 } from '@koaris/bloom-ui'
+import { AxiosError } from 'axios'
 import { useSearchParams } from 'next/navigation'
 import { useEffect } from 'react'
 import { useForm } from 'react-hook-form'
@@ -44,13 +46,24 @@ export default function Register() {
   const searchParams = useSearchParams()
 
   useEffect(() => {
-    searchParams.forEach((value, key) => {
+    searchParams.forEach((value) => {
       value && setValue('username', String(value))
     })
   }, [searchParams, setValue])
 
   async function handleRegister(data: RegisterFormData) {
-    console.log(data)
+    try {
+      await api.post('/users', {
+        username: data.username,
+        name: data.name,
+      })
+    } catch (error) {
+      if (error instanceof AxiosError && error?.response?.data.error) {
+        alert(error.response?.data.error)
+        return
+      }
+      console.error(error)
+    }
   }
 
   return (
