@@ -2,6 +2,7 @@ import { Form, Button, TextInput, Text } from '@koaris/bloom-ui'
 import { FieldValues, SubmitHandler, useForm } from 'react-hook-form'
 import { GrLinkNext } from 'react-icons/gr'
 import { zodResolver } from '@hookform/resolvers/zod'
+import { useRouter } from 'next/navigation'
 import { z } from 'zod'
 
 const claimUsernameFormSchema = z.object({
@@ -21,13 +22,17 @@ export function ClaimUsernameForm() {
   const {
     register,
     handleSubmit,
-    formState: { errors },
+    formState: { errors, isSubmitting },
   } = useForm<ClaimUsernameFormData>({
     resolver: zodResolver(claimUsernameFormSchema),
   })
 
+  const router = useRouter()
+
   async function handleClaimUsername(data: ClaimUsernameFormData) {
-    console.log(data.username)
+    const { username } = data
+
+    await router.push(`/register?username=${username}`)
   }
 
   return (
@@ -45,7 +50,12 @@ export function ClaimUsernameForm() {
           type={'text'}
           {...register('username')}
         />
-        <Button size="sm" type="submit" className="w-42">
+        <Button
+          size="sm"
+          type="submit"
+          className="w-42"
+          disabled={isSubmitting}
+        >
           <>
             <span style={{ paddingRight: '1rem' }}>Próximo</span>
             <GrLinkNext />

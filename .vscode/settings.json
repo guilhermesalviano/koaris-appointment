@@ -2,14 +2,16 @@
     "[html]": {
         "editor.defaultFormatter": "lonefy.vscode-JS-CSS-HTML-formatter"
     },
+    "[javascript]": {
+        "editor.defaultFormatter": "rvest.vs-code-prettier-eslint"
+    },
+    "[javascriptreact]": {
+        "editor.defaultFormatter": "rvest.vs-code-prettier-eslint"
+    },
     "editor.cursorStyle": "line",
     "editor.lineNumbers": "on",
     "editor.wordSeparators": "/\\()\"':,.;<>~!@#$%^&*|+=[]{}`?-",
     "explorer.confirmDelete": false,
-    "terminal.external.windowsExec": "C:\\Program Files\\cmder\\Cmder.exe",
-    "settingsSync.ignoredSettings": [
-        "terminal.external.windowsExec"
-    ],
     "typescript.updateImportsOnFileMove.enabled": "always",
     "javascript.updateImportsOnFileMove.enabled": "always",
     "markdown-preview-enhanced.previewTheme": "vue.css",
@@ -23,17 +25,18 @@
     "[typescriptreact]": {
         "editor.defaultFormatter": "vscode.typescript-language-features"
     },
+    "eslint.enable": true,
     "terminal.integrated.env.osx": {},
     "console-ninja.featureSet": "Community",
     "markdown-preview-enhanced.codeBlockTheme": "default.css",
     "workbench.colorTheme": "Default Dark+",
     "editor.wordWrap": "wordWrapColumn",
-    "editor.wordWrapColumn": 80,
+    "editor.wordWrapColumn": 120,
     "editor.defaultFormatter": "rvest.vs-code-prettier-eslint",
     "editor.formatOnPaste": false, // required 
     "editor.formatOnType": false, // required
     "editor.formatOnSave": true, // optional 
     "editor.formatOnSaveMode": "file", // required to format on save
-    "files.autoSave": "afterDelay", // optional but recommended
-    "vs-code-prettier-eslint.prettierLast": false // set as "true" to run 'prettier' last not first
+    "files.autoSave": "onFocusChange", // optional but recommended
+    "vs-code-prettier-eslint.prettierLast": true 
 }

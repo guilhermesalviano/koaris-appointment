@@ -9,6 +9,8 @@ import {
   Input,
   Button,
 } from '@koaris/bloom-ui'
+import { useSearchParams } from 'next/navigation'
+import { useEffect } from 'react'
 import { useForm } from 'react-hook-form'
 import { GrLinkNext } from 'react-icons/gr'
 import { z } from 'zod'
@@ -33,13 +35,22 @@ export default function Register() {
   const {
     register,
     handleSubmit,
+    setValue,
     formState: { errors, isSubmitting },
   } = useForm<RegisterFormData>({
     resolver: zodResolver(registerFormSchema),
   })
 
+  const searchParams = useSearchParams()
+
+  useEffect(() => {
+    searchParams.forEach((value, key) => {
+      value && setValue('username', String(value))
+    })
+  }, [searchParams, setValue])
+
   async function handleRegister(data: RegisterFormData) {
-    console.log(data);
+    console.log(data)
   }
 
   return (
@@ -54,7 +65,10 @@ export default function Register() {
         </Text>
         <MultiStep size={4} currentStep={1} />
       </header>
-      <Form className="flex flex-col bg-neutral-100 border-neutral-200 mt-6 gap-4" onSubmit={handleSubmit(handleRegister)}>
+      <Form
+        className="flex flex-col bg-neutral-100 border-neutral-200 mt-6 gap-4"
+        onSubmit={handleSubmit(handleRegister)}
+      >
         <label>
           <Text size="sm">Nome de usuário</Text>
           <TextInput
@@ -65,8 +79,8 @@ export default function Register() {
             {...register('username')}
           />
           {errors.username && (
-            <Text className='text-red-500' size='sm'>
-                {errors.username?.message}
+            <Text className="text-red-500" size="sm">
+              {errors.username?.message}
             </Text>
           )}
         </label>
@@ -81,8 +95,8 @@ export default function Register() {
             {...register('name')}
           />
           {errors.name && (
-            <Text className='text-red-500' size='sm'>
-                {errors.name?.message}
+            <Text className="text-red-500" size="sm">
+              {errors.name?.message}
             </Text>
           )}
         </label>
@@ -99,7 +113,6 @@ export default function Register() {
           </>
         </Button>
       </Form>
-      
     </main>
   )
 }
