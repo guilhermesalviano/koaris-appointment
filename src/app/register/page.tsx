@@ -11,7 +11,7 @@ import {
   Button,
 } from '@koaris/bloom-ui'
 import { AxiosError } from 'axios'
-import { useSearchParams } from 'next/navigation'
+import { useRouter, useSearchParams } from 'next/navigation'
 import { useEffect } from 'react'
 import { useForm } from 'react-hook-form'
 import { GrLinkNext } from 'react-icons/gr'
@@ -44,6 +44,7 @@ export default function Register() {
   })
 
   const searchParams = useSearchParams()
+  const router = useRouter()
 
   useEffect(() => {
     searchParams.forEach((value) => {
@@ -57,6 +58,8 @@ export default function Register() {
         username: data.username,
         name: data.name,
       })
+
+      await router.push('/connect-calendar')
     } catch (error) {
       if (error instanceof AxiosError && error?.response?.data.error) {
         alert(error.response?.data.error)
