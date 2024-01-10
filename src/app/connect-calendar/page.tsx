@@ -2,7 +2,6 @@ import { Heading, Box, Text, MultiStep, Button } from '@koaris/bloom-ui'
 import { GrLinkNext } from 'react-icons/gr'
 
 export default function ConnectCalendar() {
-
   return (
     <main className="w-96 my-20 mx-4">
       <header className="flex flex-col gap-2 px-4">
