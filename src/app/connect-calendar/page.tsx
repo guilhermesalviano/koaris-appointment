@@ -1,7 +1,11 @@
+'use client'
 import { Heading, Box, Text, MultiStep, Button } from '@koaris/bloom-ui'
+import { signIn, useSession } from 'next-auth/react'
 import { GrLinkNext } from 'react-icons/gr'
 
 export default function ConnectCalendar() {
+  const session = useSession()
+
   return (
     <main className="w-96 my-20 mx-4">
       <header className="flex flex-col gap-2 px-4">
@@ -20,12 +24,17 @@ export default function ConnectCalendar() {
       >
         <Box variant="primary" className="flex items-center gap-5">
           <Text>Google Calendar</Text>
-          <Button variant="secondary" className="float-left w-32">
+          <Button
+            variant="secondary"
+            className="float-left w-32"
+            onClick={() => signIn('google')}
+          >
             <>
               <span style={{ paddingRight: '1rem' }}>Conectar</span>
               <GrLinkNext />
             </>
           </Button>
+          <Text>{JSON.stringify(session)}</Text>
         </Box>
         <Button size="sm" type="submit" className="w-42">
           <>
