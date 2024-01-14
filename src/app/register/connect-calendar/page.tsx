@@ -34,7 +34,6 @@ export default function ConnectCalendar() {
               <GrLinkNext />
             </>
           </Button>
-          <Text>{JSON.stringify(session)}</Text>
         </Box>
         <Button size="sm" type="submit" className="w-42">
           <>
