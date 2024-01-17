@@ -1,10 +1,18 @@
 'use client'
 import { Heading, Box, Text, MultiStep, Button } from '@koaris/bloom-ui'
 import { signIn, useSession } from 'next-auth/react'
-import { GrLinkNext } from 'react-icons/gr'
+import { useSearchParams } from 'next/navigation'
+import { GrCheckmark, GrLinkNext } from 'react-icons/gr'
 
 export default function ConnectCalendar() {
   const session = useSession()
+
+  const hasAuthError = !!useSearchParams().get('error')
+  const isSignedIn = session.status === 'authenticated'
+
+  async function handleConnectCalendar() {
+    await signIn('google')
+  }
 
   return (
     <main className="w-96 my-20 mx-4">
@@ -24,18 +32,38 @@ export default function ConnectCalendar() {
       >
         <Box variant="primary" className="flex items-center gap-5">
           <Text>Google Calendar</Text>
-          <Button
-            variant="secondary"
-            className="float-left w-32"
-            onClick={() => signIn('google')}
-          >
-            <>
-              <span style={{ paddingRight: '1rem' }}>Conectar</span>
-              <GrLinkNext />
-            </>
-          </Button>
+          {isSignedIn ? (
+            <Button
+              variant="secondary"
+              className="float-left w-32"
+              disabled={true}
+              onClick={() => signIn('google')}
+            >
+              <>
+                <span style={{ paddingRight: '1rem' }}>Conectado</span>
+                <GrCheckmark />
+              </>
+            </Button>
+          ) : (
+            <Button
+              variant="secondary"
+              className="float-left w-32"
+              onClick={handleConnectCalendar}
+            >
+              <>
+                <span style={{ paddingRight: '1rem' }}>Conectar</span>
+                <GrLinkNext className="border-orange-500" />
+              </>
+            </Button>
+          )}
         </Box>
-        <Button size="sm" type="submit" className="w-42">
+
+        {hasAuthError && (
+          <Text size="sm" color="red-500">
+            Erro ao se conectar com o Google Calendar
+          </Text>
+        )}
+        <Button size="sm" type="submit" className="w-42" disabled={!isSignedIn}>
           <>
             <span style={{ paddingRight: '1rem' }}>Próximo passo</span>
             <GrLinkNext />
